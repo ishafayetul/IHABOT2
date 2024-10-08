@@ -1,0 +1,208 @@
+<?xml version="1.0" ?>
+<robot name="test_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find test_urdf_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find test_urdf_description)/urdf/test_urdf.trans" />
+<xacro:include filename="$(find test_urdf_description)/urdf/test_urdf.gazebo" />
+
+<xacro:property name="camera_size" value="0.02"/>
+<xacro:property name="camera_origin_x" value="0.065"/>
+<xacro:property name="camera_origin_y" value="0"/>
+<xacro:property name="camera_origin_z" value="0.07"/>
+
+
+<xacro:property name="laser_size_x" value="0.03"/>
+<xacro:property name="laser_size_y" value="0.03"/>
+<xacro:property name="laser_size_z" value="0.04"/>
+<xacro:property name="laser_origin_x" value="0.000"/>
+<xacro:property name="laser_origin_y" value="0"/>
+<xacro:property name="laser_origin_z" value="0.1"/>
+
+<link name="base_footprint">
+</link>
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.002324266194787791 8.74787643784769e-08 -0.021221672503303222" rpy="0 0 0"/>
+    <mass value="5.27012256089369"/>
+    <inertia ixx="0.041911" iyy="0.052658" izz="0.070317" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="backward_left_wheel_v1_1">
+  <inertial>
+    <origin xyz="-1.1557248450533297e-05 0.011279563276149276 -2.765017378882073e-05" rpy="0 0 0"/>
+    <mass value="0.40458091077455555"/>
+    <inertia ixx="0.000102" iyy="0.00014" izz="0.000102" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.077767 -0.0855 0.074294" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_urdf_description/meshes/backward_left_wheel_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="green"/>
+  </visual>
+  <collision>
+    <origin xyz="0.077767 -0.0855 0.074294" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_urdf_description/meshes/backward_left_wheel_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="backward_right_wheel_v1_1">
+  <inertial>
+    <origin xyz="1.135019835438178e-05 -0.011279383659375988 -2.765017378618395e-05" rpy="0 0 0"/>
+    <mass value="0.40458091077455555"/>
+    <inertia ixx="0.000102" iyy="0.00014" izz="0.000102" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.077767 0.0855 0.074294" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_urdf_description/meshes/backward_right_wheel_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="green"/>
+  </visual>
+  <collision>
+    <origin xyz="0.077767 0.0855 0.074294" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_urdf_description/meshes/backward_right_wheel_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="forward_left_wheel_v1_1">
+  <inertial>
+    <origin xyz="-1.155724844129069e-05 0.011279563276145904 -2.765017378712764e-05" rpy="0 0 0"/>
+    <mass value="0.40458091077455555"/>
+    <inertia ixx="0.000102" iyy="0.00014" izz="0.000102" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.082233 -0.0855 0.074294" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_urdf_description/meshes/forward_left_wheel_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="green"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.082233 -0.0855 0.074294" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_urdf_description/meshes/forward_left_wheel_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="forward_right_wheel_v1_1">
+  <inertial>
+    <origin xyz="1.1350198356616104e-05 -0.01127938365937553 -2.7650173787835408e-05" rpy="0 0 0"/>
+    <mass value="0.40458091077455555"/>
+    <inertia ixx="0.000102" iyy="0.00014" izz="0.000102" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.082233 0.0855 0.074294" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_urdf_description/meshes/forward_right_wheel_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="green"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.082233 0.0855 0.074294" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://test_urdf_description/meshes/forward_right_wheel_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+ <!--Camera-->
+ <link name="camera">
+  <visual>
+    <geometry>
+      <box size="${camera_size} ${camera_size} ${camera_size}"/>
+    </geometry>
+    <material name="blue"/>
+  </visual>
+  <collision>
+    <geometry>
+      <box size="${camera_size} ${camera_size} ${camera_size}"/>
+    </geometry>
+  </collision>
+  <mass value="0.2"/>
+</link>
+
+<!--Laser Scan-->
+<link name="sensor_laser">
+  <visual>
+    <geometry>
+      
+      <box size="${laser_size_x} ${laser_size_y} ${laser_size_z}"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <geometry>
+      <box size="${laser_size_x} ${laser_size_y} ${laser_size_z}"/>
+    </geometry>
+  </collision>
+  <mass value="0.02"/>
+</link>
+
+
+<joint name="base_footprint_joint" type="fixed">
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+</joint>
+
+<joint name="Revolute_1" type="continuous">
+  <origin xyz="-0.077767 0.0855 -0.074294" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="backward_left_wheel_v1_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Revolute_2" type="continuous">
+  <origin xyz="-0.077767 -0.0855 -0.074294" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="backward_right_wheel_v1_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Revolute_3" type="continuous">
+  <origin xyz="0.082233 0.0855 -0.074294" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="forward_left_wheel_v1_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Revolute_4" type="continuous">
+  <origin xyz="0.082233 -0.0855 -0.074294" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="forward_right_wheel_v1_1"/>
+  <axis xyz="-0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="camera_joint" type="fixed">
+  <origin xyz="${camera_origin_x} ${camera_origin_y} ${camera_origin_z}" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="camera"/>
+</joint>
+
+  <joint name="sensor_laser_joint" type="fixed">
+    <origin xyz="${laser_origin_x} ${laser_origin_y} ${laser_origin_z}" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="sensor_laser" />
+  </joint>
+
+</robot>

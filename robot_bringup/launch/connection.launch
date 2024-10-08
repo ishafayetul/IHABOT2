@@ -1,0 +1,5 @@
+<launch>
+<include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+  <!--roslaunch rosbridge_server rosbridge_websocket.launch/-->
+<node name="Receive_and_Publish" pkg="robot_bringup" type="receive_goal_interface.py" respawn="true" output="screen"/>
+</launch>

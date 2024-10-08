@@ -1,0 +1,19 @@
+<launch>
+  <param name="robot_description" command="$(find xacro)/xacro $(find test_urdf_description)/urdf/test_urdf.xacro"/>
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model test_urdf"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find test_urdf_description)/worlds/World.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <arg name="map" default="map"/>
+  <arg name="map_file" default="$(find test_urdf_description)/map/$(arg map).yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+</launch>

@@ -1,0 +1,22 @@
+
+
+Encoder encoder_fleft(43, 42);
+Encoder encoder_fright(44, 45);
+Encoder encoder_bleft(47, 46);
+Encoder encoder_bright(48, 49); 
+
+const uint8_t LF_PWM = 3;
+const uint8_t LF_BACK = 25;
+const uint8_t LF_FORW = 24;
+
+const uint8_t RF_PWM = 2;
+const uint8_t RF_BACK = 23;
+const uint8_t RF_FORW = 22;
+
+const uint8_t LB_PWM = 5;
+const uint8_t LB_BACK = 29;
+const uint8_t LB_FORW = 28;
+
+const uint8_t RB_PWM = 4;
+const uint8_t RB_BACK = 26;
+const uint8_t RB_FORW = 27;

@@ -1,0 +1,30 @@
+<launch>
+  <!--include file="$(find robot_bringup)/launch/gmapping.launch" /-->
+  <arg name="map" default="map_test"/>
+  <arg name="map_file" default="$(find robot_bringup)/map/two_room_map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+  
+  <!--Filters-->
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain"
+      name="laser_filter">
+    <rosparam command="load" file="$(find robot_bringup)/filters/box_filter.yaml" />
+  </node>
+  
+  <!--- Run AMCL -->
+  <include file="$(find robot_bringup)/launch/amcl.launch" />
+
+  <!--include file="$(find imu_test)/launch/imu.launch" /-->
+  <!--include file="$(find imu_filter_madgwick)/launch/imu_filter_madgwick_withoutmag.launch" /-->
+
+  <node pkg="tf" type="static_transform_publisher" name="imu_broadcaster" args="-0.165 0.1 0.527 0 0 0.5 robot_footprint imu_link 40"/>
+
+  <!--node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" clear_params="true"-->
+    <!--rosparam command="load" file="$(find robot_bringup)/config/robot_localization_ekf.yaml"/-->
+    <!--remap from="odometry/filtered" to="odom"/-->
+    <!--remap from="odometry/filtered" to="odometry/filtered"/-->
+  <!--/node-->
+  <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_bringup)/final_test_rviz.rviz"/-->
+  <!--node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen"/-->  
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_bringup)/final_test_rviz.rviz"/>
+</launch>

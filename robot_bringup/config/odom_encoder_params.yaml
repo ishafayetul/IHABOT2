@@ -1,0 +1,7 @@
+base_width: 0.44
+wheel_radius: 0.0425
+wheel_separation_width: 0.18125
+wheel_separation_lenght: 0.125
+ticks_meter: 34000
+publish_tf: 1
+odom_frame_id: odom  #_encoder

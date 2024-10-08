@@ -1,0 +1,7 @@
+2 test need to try:
+1: Controller Test from here-> https://github.com/dudasdavid/mecanum_drive/blob/master/src/mecanum_drive/controller.py 
+2: Odometry test from here -> https://github.com/dudasdavid/mecanum_drive/blob/master/src/mecanum_drive/odometry.py
+
+Then compare which one gives better result.
+
+
